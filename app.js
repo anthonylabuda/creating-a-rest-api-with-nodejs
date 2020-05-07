@@ -1,12 +1,10 @@
 const express = require("express");
+const orderRoutes = require("./api/routes/orders");
+const productRoutes = require("./api/routes/products");
 
 const app = express();
 
-app.use((req, res, next) => {
-    res.status(200).json({
-        "success": true,
-        "message": "RESTful API is online!"
-    });
-});
+app.use('/orders', orderRoutes);
+app.use('/products', productRoutes);
 
 module.exports = app;
