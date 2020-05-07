@@ -1,3 +1,4 @@
+import bodyParser from "body-parser";
 import express from "express";
 import morgan from "morgan";
 import routes from "./routes";
@@ -5,6 +6,9 @@ import routes from "./routes";
 const api = express();
 
 api.use(morgan("dev"));
+
+api.use(bodyParser.json());
+api.use(bodyParser.urlencoded({ extended: false }));
 
 api.use("/orders", routes.orders);
 api.use("/products", routes.products);
