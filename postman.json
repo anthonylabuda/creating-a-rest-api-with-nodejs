@@ -31,6 +31,15 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Harry Potter and the Sorcerer's Stone\",\n\t\"price\": 12.95\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "localhost:3000/products",
 							"host": [
@@ -130,6 +139,15 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"productId\": 1,\n\t\"quantity\": 99\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "localhost:3000/orders",
 							"host": [
