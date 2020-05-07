@@ -183,6 +183,24 @@
 				}
 			],
 			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "/status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/status",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"status"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}

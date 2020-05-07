@@ -8,6 +8,7 @@ api.use(morgan("dev"));
 
 api.use("/orders", routes.orders);
 api.use("/products", routes.products);
+api.use("/status", routes.status);
 
 api.use((req, res, next) => {
     const error = new Error("Not Found");
