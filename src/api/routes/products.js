@@ -6,19 +6,23 @@ const router = express.Router();
 // /products
 // -------------------------
 router.get("/", (req, res, next) => {
+    const products = [];
+
     res.status(200).json({
         "message": "Handling GET requests to /products",
         "data": {
-            "products": []
+            products
         }
     });
 });
 
 router.post("/", (req, res, next) => {
+    const product = {};
+
     res.status(201).json({
         "message": "Handling POST requests to /products",
         "data": {
-            "product": {}
+            product
         }
     });
 });
@@ -28,39 +32,42 @@ router.post("/", (req, res, next) => {
 // -------------------------
 router.delete("/:id", (req, res, next) => {
     const id = req.params.id;
+    const product = {
+        id
+    };
 
     res.status(200).json({
         "message": "Handling DELETE requests to /products/:id",
         "data": {
-            "product": {
-                "id": id
-            }
+            product
         }
     });
 });
 
 router.get("/:id", (req, res, next) => {
     const id = req.params.id;
+    const product = {
+        id
+    };
 
     res.status(200).json({
         "message": "Handling GET requests to /products/:id",
         "data": {
-            "product": {
-                "id": id
-            }
+            product
         }
     });
 });
 
 router.patch("/:id", (req, res, next) => {
     const id = req.params.id;
+    const product = {
+        id
+    };
 
     res.status(200).json({
         "message": "Handling PATCH requests to /products/:id",
         "data": {
-            "product": {
-                "id": id
-            }
+            product
         }
     });
 });
