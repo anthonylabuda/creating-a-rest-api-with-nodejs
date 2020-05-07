@@ -5,7 +5,7 @@ const router = express.Router();
 // -------------------------
 // /orders
 // -------------------------
-router.get('/', (req, res, next) => {
+router.get("/", (req, res, next) => {
     res.status(200).json({
         "message": "Handling GET requests to /orders",
         "data": {
@@ -14,7 +14,7 @@ router.get('/', (req, res, next) => {
     });
 });
 
-router.post('/', (req, res, next) => {
+router.post("/", (req, res, next) => {
     res.status(201).json({
         "message": "Handling POST requests to /orders",
         "data": {
@@ -26,7 +26,7 @@ router.post('/', (req, res, next) => {
 // -------------------------
 // /orders/:id
 // -------------------------
-router.delete('/:id', (req, res, next) => {
+router.delete("/:id", (req, res, next) => {
     const id = req.params.id;
 
     res.status(200).json({
@@ -39,7 +39,7 @@ router.delete('/:id', (req, res, next) => {
     });
 });
 
-router.get('/:id', (req, res, next) => {
+router.get("/:id", (req, res, next) => {
     const id = req.params.id;
 
     res.status(200).json({

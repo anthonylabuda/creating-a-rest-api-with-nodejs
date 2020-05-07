@@ -4,13 +4,13 @@ import routes from "./routes";
 
 const api = express();
 
-api.use(morgan('dev'));
+api.use(morgan("dev"));
 
-api.use('/orders', routes.orders);
-api.use('/products', routes.products);
+api.use("/orders", routes.orders);
+api.use("/products", routes.products);
 
 api.use((req, res, next) => {
-    const error = new Error('Not Found');
+    const error = new Error("Not Found");
 
     error.status = 404;
 
