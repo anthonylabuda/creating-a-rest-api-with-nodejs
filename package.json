@@ -1,0 +1,17 @@
+{
+  "name": "creating-a-rest-api-with-nodejs",
+  "version": "1.0.0",
+  "description": "Creating a REST API with Node.js Tutorial",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Anthony LaBuda",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
