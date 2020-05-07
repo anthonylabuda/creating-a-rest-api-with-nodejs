@@ -31,9 +31,8 @@ router.post("/", (req, res, next) => {
 // /products/:id
 // -------------------------
 router.delete("/:id", (req, res, next) => {
-    const id = req.params.id;
     const product = {
-        id
+        id: req.params.id
     };
 
     res.status(200).json({
@@ -45,9 +44,8 @@ router.delete("/:id", (req, res, next) => {
 });
 
 router.get("/:id", (req, res, next) => {
-    const id = req.params.id;
     const product = {
-        id
+        id: req.params.id
     };
 
     res.status(200).json({
@@ -59,9 +57,8 @@ router.get("/:id", (req, res, next) => {
 });
 
 router.patch("/:id", (req, res, next) => {
-    const id = req.params.id;
     const product = {
-        id
+        id: req.params.id
     };
 
     res.status(200).json({
