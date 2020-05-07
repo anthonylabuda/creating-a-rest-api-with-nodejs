@@ -1,4 +1,4 @@
-const express = require("express");
+import express from "express";
 
 const router = express.Router();
 
@@ -65,4 +65,4 @@ router.patch('/:id', (req, res, next) => {
     });
 });
 
-module.exports = router;
+export default router;

@@ -1,9 +1,9 @@
-const express = require("express");
-const routes = require("./api/routes");
+import express from "express";
+import routes from "./api/routes";
 
 const app = express();
 
 app.use('/orders', routes.orders);
 app.use('/products', routes.products);
 
-module.exports = app;
+export default app;

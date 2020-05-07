@@ -1,7 +1,9 @@
-const orders = require("./orders");
-const products = require("./products");
+import orders from "./orders";
+import products from "./products";
 
-module.exports = {
+const routes = {
     orders,
     products
-};
+}
+
+export default routes;
