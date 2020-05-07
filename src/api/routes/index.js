@@ -1,9 +1,7 @@
 import orders from "./orders";
 import products from "./products";
 
-const routes = {
+export default {
     orders,
     products
-}
-
-export default routes;
+};
