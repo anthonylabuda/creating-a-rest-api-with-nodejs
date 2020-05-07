@@ -1,10 +1,9 @@
 const express = require("express");
-const orderRoutes = require("./api/routes/orders");
-const productRoutes = require("./api/routes/products");
+const routes = require("./api/routes");
 
 const app = express();
 
-app.use('/orders', orderRoutes);
-app.use('/products', productRoutes);
+app.use('/orders', routes.orders);
+app.use('/products', routes.products);
 
 module.exports = app;
