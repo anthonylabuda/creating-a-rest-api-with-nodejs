@@ -5,10 +5,11 @@ import Users from "../models/users.js";
 
 const DELETE_USER_BY_ID = (req, res, next) => {
     const _id = req.params._id;
+    const user = { _id };
 
     Users.findByIdAndDelete({ _id })
         .exec()
-        .then(() => res.status(200).json({ user: { _id } }))
+        .then(() => res.status(200).json({ user }))
         .catch(error => res.status(500).json({ error }));
 };
 
