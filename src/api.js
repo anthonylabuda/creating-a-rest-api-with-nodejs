@@ -1,4 +1,5 @@
 import bodyParser from "body-parser";
+import compression from "compression";
 import cors from "cors";
 import express from "express";
 import helmet from "helmet";
@@ -19,17 +20,14 @@ mongoose.set(`useNewUrlParser`, true);
 mongoose.set(`useUnifiedTopology`, true);
 mongoose.connect(db);
 
+api.use(compression());
 api.use(helmet());
-
 api.use(morgan(`dev`));
-
 api.use(bodyParser.json());
 api.use(bodyParser.urlencoded({ extended: false }));
-
 api.use(cors())
 
 api.use(`/uploads`, express.static(`uploads`));
-
 api.use(`/orders`, OrdersRoutes);
 api.use(`/products`, ProductsRoutes);
 api.use(`/status`, StatusRoutes);
