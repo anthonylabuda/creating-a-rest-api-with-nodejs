@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import multer from "multer";
+import authenticate from "../middleware/authentication.js";
 import Product from "../models/product.js";
 
 const router = express.Router();
@@ -35,7 +36,7 @@ router.get(`/`, (req, res, next) => {
         .catch(error => res.status(500).json({ error }));
 });
 
-router.post(`/`, upload.single(`image`), (req, res, next) => {
+router.post(`/`, authenticate, upload.single(`image`), (req, res, next) => {
     const { path } = req.file;
     const { name, price } = req.body;
 
@@ -54,7 +55,7 @@ router.post(`/`, upload.single(`image`), (req, res, next) => {
 // -------------------------
 // /products/:id
 // -------------------------
-router.delete(`/:_id`, (req, res, next) => {
+router.delete(`/:_id`, authenticate, (req, res, next) => {
     const _id = req.params._id;
     const product = { _id };
 
@@ -73,7 +74,7 @@ router.get(`/:_id`, (req, res, next) => {
         .catch(error => res.status(500).json({ error }));
 });
 
-router.patch(`/:_id`, (req, res, next) => {
+router.patch(`/:_id`, authenticate, (req, res, next) => {
     const _id = req.params._id;
     const product = req.body;
 

@@ -1,5 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
+import authenticate from "../middleware/authentication.js";
 import Order from "../models/order.js";
 
 const router = express.Router();
@@ -7,7 +8,7 @@ const router = express.Router();
 // -------------------------
 // /orders
 // -------------------------
-router.get(`/`, (req, res, next) => {
+router.get(`/`, authenticate, (req, res, next) => {
     Order.find()
         .populate(`product`)
         .exec()
@@ -15,7 +16,7 @@ router.get(`/`, (req, res, next) => {
         .catch(error => res.status(500).json({ error }));
 });
 
-router.post(`/`, (req, res, next) => {
+router.post(`/`, authenticate, (req, res, next) => {
     const { product, quantity } = req.body;
 
     const order = new Order({
@@ -32,7 +33,7 @@ router.post(`/`, (req, res, next) => {
 // -------------------------
 // /orders/:_id
 // -------------------------
-router.delete(`/:_id`, (req, res, next) => {
+router.delete(`/:_id`, authenticate, (req, res, next) => {
     const _id = req.params._id;
     const order = { _id };
 
@@ -42,7 +43,7 @@ router.delete(`/:_id`, (req, res, next) => {
         .catch(error => res.status(500).json({ error }));
 });
 
-router.get(`/:_id`, (req, res, next) => {
+router.get(`/:_id`, authenticate, (req, res, next) => {
     const _id = req.params._id;
 
     Order.findById(_id)
