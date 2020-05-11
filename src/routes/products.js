@@ -1,8 +1,7 @@
 import express from "express";
-import mongoose from "mongoose";
 import multer from "multer";
 import authenticate from "../middleware/authentication.js";
-import Product from "../models/product.js";
+import productsController from "../controllers/products.js";
 
 const router = express.Router();
 
@@ -26,61 +25,11 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ fileFilter, limits, storage });
 
-// -------------------------
-// /products
-// -------------------------
-router.get(`/`, (req, res, next) => {
-    Product.find()
-        .exec()
-        .then(products => res.status(200).json({ count: products.length, products }))
-        .catch(error => res.status(500).json({ error }));
-});
+router.get(`/`, productsController.GET_PRODUCTS);
+router.post(`/`, authenticate, upload.single(`image`), productsController.POST_PRODUCT);
 
-router.post(`/`, authenticate, upload.single(`image`), (req, res, next) => {
-    const { path } = req.file;
-    const { name, price } = req.body;
-
-    const product = new Product({
-        _id: new mongoose.Types.ObjectId(),
-        name,
-        price,
-        image: path,
-    });
-
-    product.save()
-        .then(product => res.status(201).json({ product }))
-        .catch(error => res.status(500).json({ error }));
-});
-
-// -------------------------
-// /products/:id
-// -------------------------
-router.delete(`/:_id`, authenticate, (req, res, next) => {
-    const _id = req.params._id;
-    const product = { _id };
-
-    Product.findByIdAndDelete(_id)
-        .exec()
-        .then(() => res.status(200).json({ product }))
-        .catch(error => res.status(500).json({ error }));
-});
-
-router.get(`/:_id`, (req, res, next) => {
-    const _id = req.params._id;
-
-    Product.findById(_id)
-        .exec()
-        .then(product => res.status(200).json({ product }))
-        .catch(error => res.status(500).json({ error }));
-});
-
-router.patch(`/:_id`, authenticate, (req, res, next) => {
-    const _id = req.params._id;
-    const product = req.body;
-
-    Product.findByIdAndUpdate(_id, product, { new: true })
-        .then(product => res.status(200).json({ product }))
-        .catch(error => res.status(500).json({ error }));
-});
+router.delete(`/:_id`, authenticate, productsController.DELETE_PRODUCT_BY_ID);
+router.get(`/:_id`, productsController.GET_PRODUCT_BY_ID);
+router.patch(`/:_id`, authenticate, productsController.PATCH_PRODUCT_BY_ID);
 
 export default router;

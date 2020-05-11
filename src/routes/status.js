@@ -1,10 +1,8 @@
 import express from "express";
+import statusController from "../controllers/status.js";
 
 const router = express.Router();
 
-// -------------------------
-// /status
-// -------------------------
-router.get(`/`, (req, res, next) => res.status(200).json({}));
+router.get(`/`, statusController.GET_STATUS);
 
 export default router;
