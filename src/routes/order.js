@@ -16,9 +16,8 @@ router.get(`/`, (req, res, next) => {
 
 router.post(`/`, (req, res, next) => {
     const order = new Order({
-        _id: new mongoose.Types.ObjectId(),
-        productId: req.body.productId,
-        quantity: req.body.quantity
+        ...req.body,
+        _id: new mongoose.Types.ObjectId()
     });
 
     order.save()
