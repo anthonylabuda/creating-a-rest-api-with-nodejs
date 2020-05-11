@@ -32,6 +32,20 @@ const middleware = {
     morgan: {
         format: `dev`
     },
+    multer: {
+        options: {
+            fileFilter: {
+                mimetypes: [`image/jpeg`, `image/png`]
+            },
+            limits: {
+                fileSize: 1024 * 1024 * 5
+            },
+            storage: {
+                destination: `./uploads/`,
+                filename: (originalName) => `${new Date().toISOString()}_${originalName}`
+            }
+        }
+    },
     rateLimit: {
         options: {
             max: 5,
