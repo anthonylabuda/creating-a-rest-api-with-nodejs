@@ -7,6 +7,6 @@ export default () => {
     const uri = `mongodb+srv://${settings.database.mongodb.username}:${settings.database.mongodb.password}@${baseUri}?retryWrites=true&w=majority`;
 
     mongoose.connect(uri, settings.database.mongodb.orm.mongoose.options)
-        .then(settings.database.mongodb.orm.mongoose.connect.callback(baseUri))
-        .catch(settings.error.catch.callback);
+        .then(() => console.log(`[DATABASE] :: Connected to MongoDB database: ${baseUri}`))
+        .catch(error => console.log(error));
 };

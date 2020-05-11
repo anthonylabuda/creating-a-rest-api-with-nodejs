@@ -6,7 +6,7 @@ export const authenticate = (req, res, next) => {
     const token = req.headers.authorization.split(` `)[1];
 
     try {
-        const decodedToken = jwt.verify(token, settings.jwt.secret);
+        const decodedToken = jwt.verify(token, settings.middleware.jwt.secret);
 
         req.token = decodedToken;
 
