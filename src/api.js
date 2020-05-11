@@ -26,6 +26,7 @@ api.use(cors())
 api.use("/orders", orderRoutes);
 api.use("/products", productRoutes);
 api.use("/status", statusRoutes);
+api.use(`/uploads`, express.static(`uploads`));
 
 api.use((req, res, next) => {
     const error = new Error("Not Found");

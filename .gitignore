@@ -134,6 +134,7 @@ dist/
 # Temporary folders
 tmp/
 temp/
+uploads/
 
 # Nodemon configuration
 nodemon.json
