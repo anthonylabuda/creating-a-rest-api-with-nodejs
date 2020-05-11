@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const schema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
-    productId: {
+    product: {
         required: true,
         ref: `Product`,
         type: mongoose.Schema.Types.ObjectId
