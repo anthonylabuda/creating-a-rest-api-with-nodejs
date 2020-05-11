@@ -56,10 +56,11 @@ router.post(`/`, upload.single(`image`), (req, res, next) => {
 // -------------------------
 router.delete(`/:_id`, (req, res, next) => {
     const _id = req.params._id;
+    const product = { _id };
 
     Product.findByIdAndDelete(_id)
         .exec()
-        .then(() => res.status(200).json({ product: { _id } }))
+        .then(() => res.status(200).json({ product }))
         .catch(error => res.status(500).json({ error }));
 });
 
@@ -75,8 +76,6 @@ router.get(`/:_id`, (req, res, next) => {
 router.patch(`/:_id`, (req, res, next) => {
     const _id = req.params._id;
     const product = req.body;
-
-    delete product._id;
 
     Product.findByIdAndUpdate(_id, product, { new: true })
         .then(product => res.status(200).json({ product }))

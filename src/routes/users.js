@@ -23,23 +23,25 @@ router.delete(`/:_id`, (req, res, next) => {
 // -------------------------
 router.post(`/login`, (req, res, next) => {
     const { email, password } = req.body;
+    const user = { email };
 
     User.find({ email })
         .exec()
-        .then(user => {
-            if (user.length !== 1) return res.status(401).json({ user: { email } });
+        .then(users => {
+            if (users.length !== 1) return res.status(401).json({ user });
 
-            bcrypt.compare(password, user[0].password, (error, success) => {
+            bcrypt.compare(password, users[0].password, (error, success) => {
                 if (error) return res.status(500).json({ error });
 
                 if (success) {
-                    const { _id, email } = user[0];
+                    const { _id, email } = users[0];
                     const token = jwt.sign({ _id, email }, process.env.JWT_SECRET, { expiresIn: `1h` });
+                    const user = { _id, email, token };
 
-                    return res.status(200).json({ token })
+                    return res.status(200).json({ user });
                 };
 
-                res.status(401).json({ user: { email } });
+                res.status(401).json({ user });
             });
         })
         .catch(error => res.status(500).json({ error }));
@@ -50,19 +52,20 @@ router.post(`/login`, (req, res, next) => {
 // -------------------------
 router.post(`/signup`, (req, res, next) => {
     const { email, password } = req.body;
+    const user = { email };
 
     User.find({ email })
         .exec()
-        .then(user => {
-            if (user.length !== 0) return res.status(409).json({ user: { email } });
+        .then(users => {
+            if (users.length !== 0) return res.status(409).json({ user });
 
-            bcrypt.hash(password, 10, (error, hash) => {
+            bcrypt.hash(password, 10, (error, hashedPassword) => {
                 if (error) return res.status(500).json({ error });
 
                 const user = new User({
                     _id: new mongoose.Types.ObjectId(),
                     email,
-                    password: hash
+                    password: hashedPassword
                 });
 
                 user.save()

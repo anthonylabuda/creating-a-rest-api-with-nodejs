@@ -34,10 +34,11 @@ router.post(`/`, (req, res, next) => {
 // -------------------------
 router.delete(`/:_id`, (req, res, next) => {
     const _id = req.params._id;
+    const order = { _id };
 
     Order.findByIdAndDelete(_id)
         .exec()
-        .then(() => res.status(200).json({ order: { _id } }))
+        .then(() => res.status(200).json({ order }))
         .catch(error => res.status(500).json({ error }));
 });
 
