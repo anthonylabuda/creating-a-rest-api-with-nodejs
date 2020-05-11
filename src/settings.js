@@ -1,4 +1,7 @@
 const api = {
+    listen: {
+        callback: (port) => console.log(`[API] :: Listening on port: ${port}`)
+    },
     port: process.env.PORT || 3000
 };
 
@@ -9,6 +12,9 @@ const database = {
         password: process.env.MONGODB_PASSWORD,
         orm: {
             mongoose: {
+                connect: {
+                    callback: (baseUri) => console.log(`[DATABASE] :: Connected to MongoDB database: ${baseUri}`)
+                },
                 options: {
                     useCreateIndex: true,
                     useFindAndModify: false,
@@ -19,6 +25,12 @@ const database = {
         }
     }
 };
+
+const error = {
+    catch: {
+        callback: error => console.log(error)
+    }
+}
 
 const middleware = {
     express: {
@@ -40,5 +52,6 @@ const middleware = {
 export default {
     api,
     database,
+    error,
     middleware
 };

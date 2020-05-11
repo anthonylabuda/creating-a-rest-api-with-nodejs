@@ -11,4 +11,4 @@ applyDatabase();
 applyMiddleware(api);
 applyRouter(api);
 
-api.listen(settings.api.port, () => console.log(`[API] :: Listening on port: ${settings.api.port}`));
+api.listen(settings.api.port, settings.api.listen.callback(settings.api.port));
