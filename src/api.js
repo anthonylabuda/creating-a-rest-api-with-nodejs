@@ -4,10 +4,10 @@ import express from "express";
 import mongoose from "mongoose";
 import morgan from "morgan";
 
-import ordersRoutes from "./routes/orders.js";
-import productsRoutes from "./routes/products.js";
-import statusRoutes from "./routes/status.js";
-import usersRoutes from "./routes/users.js";
+import OrdersRoutes from "./routes/orders.js";
+import ProductsRoutes from "./routes/products.js";
+import StatusRoutes from "./routes/status.js";
+import UsersRoutes from "./routes/users.js";
 
 const api = express();
 const db = `mongodb+srv://${process.env.MONGO_ATLAS_USERNAME}:${process.env.MONGO_ATLAS_PASSWORD}@${process.env.MONGO_ATLAS_CLUSTER}-f2yue.mongodb.net/test?retryWrites=true&w=majority`;
@@ -27,10 +27,10 @@ api.use(cors())
 
 api.use(`/uploads`, express.static(`uploads`));
 
-api.use(`/orders`, ordersRoutes);
-api.use(`/products`, productsRoutes);
-api.use(`/status`, statusRoutes);
-api.use(`/users`, usersRoutes);
+api.use(`/orders`, OrdersRoutes);
+api.use(`/products`, ProductsRoutes);
+api.use(`/status`, StatusRoutes);
+api.use(`/users`, UsersRoutes);
 
 api.use((req, res, next) => {
     const error = new Error(`Not Found`);

@@ -1,7 +1,7 @@
 import express from "express";
 import multer from "multer";
 import authenticate from "../middleware/authentication.js";
-import productsController from "../controllers/products.js";
+import ProductsController from "../controllers/products.js";
 
 const router = express.Router();
 
@@ -25,11 +25,11 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ fileFilter, limits, storage });
 
-router.get(`/`, productsController.GET_PRODUCTS);
-router.post(`/`, authenticate, upload.single(`image`), productsController.POST_PRODUCT);
+router.get(`/`, ProductsController.GET_PRODUCTS);
+router.post(`/`, authenticate, upload.single(`image`), ProductsController.POST_PRODUCT);
 
-router.delete(`/:_id`, authenticate, productsController.DELETE_PRODUCT_BY_ID);
-router.get(`/:_id`, productsController.GET_PRODUCT_BY_ID);
-router.patch(`/:_id`, authenticate, productsController.PATCH_PRODUCT_BY_ID);
+router.delete(`/:_id`, authenticate, ProductsController.DELETE_PRODUCT_BY_ID);
+router.get(`/:_id`, ProductsController.GET_PRODUCT_BY_ID);
+router.patch(`/:_id`, authenticate, ProductsController.PATCH_PRODUCT_BY_ID);
 
 export default router;
