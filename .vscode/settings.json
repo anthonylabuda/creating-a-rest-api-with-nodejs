@@ -3,6 +3,7 @@
         "cacheability",
         "cacheable",
         "mimetype",
+        "mimetypes",
         "originalname",
         "ransfer"
     ]
