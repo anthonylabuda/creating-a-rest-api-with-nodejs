@@ -1,5 +1,5 @@
 import express from "express";
-import authenticate from "../middleware/authenticator.js";
+import authenticate from "../middleware/authentication.js";
 import OrdersController from "../controllers/orders.js";
 
 const router = express.Router();
