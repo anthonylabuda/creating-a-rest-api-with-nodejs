@@ -2,10 +2,11 @@ import bodyParser from "body-parser";
 import compression from "compression";
 import cors from "cors";
 import express from "express";
-import rateLimit from "express-rate-limit";
 import helmet from "helmet";
 import mongoose from "mongoose";
 import morgan from "morgan";
+
+import rateLimiterMiddleware from "./middleware/rateLimiter.js";
 
 import OrdersRoutes from "./routes/orders.js";
 import ProductsRoutes from "./routes/products.js";
@@ -21,13 +22,14 @@ mongoose.set(`useNewUrlParser`, true);
 mongoose.set(`useUnifiedTopology`, true);
 mongoose.connect(db);
 
+api.use(rateLimiterMiddleware());
+
 api.use(compression());
 api.use(helmet());
 api.use(morgan(`dev`));
 api.use(bodyParser.json());
 api.use(bodyParser.urlencoded({ extended: false }));
 api.use(cors())
-api.use(rateLimit({ max: 5, windowMs: 1 * 60 * 100 }));
 
 api.use(`/uploads`, express.static(`uploads`));
 api.use(`/orders`, OrdersRoutes);
