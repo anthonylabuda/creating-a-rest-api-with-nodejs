@@ -4,6 +4,13 @@ import multer from "multer";
 import Product from "../models/product.js";
 
 const router = express.Router();
+
+const fileFilter = (req, file, callback) => {
+    if (file.mimetype === `image/jpeg` || file.mimetype === `image/png`) return callback(null, true);
+
+    callback(null, false);
+}
+const limit = { fileSize: 1024 * 1024 * 5 };
 const storage = multer.diskStorage({
     destination: (req, file, callback) => {
         callback(null, `./uploads/`);
@@ -12,13 +19,7 @@ const storage = multer.diskStorage({
         callback(null, `${new Date().toISOString()}_${file.originalname}`);
     }
 });
-const fileFilter = (req, file, callback) => {
-    if (file.mimetype === `image/jpeg` || file.mimetype === `image/png`) return callback(null, true);
-
-    callback(null, false);
-}
-
-const upload = multer({ storage, fileFilter, limits: { fileSize: 1024 * 1024 * 5 } });
+const upload = multer({ storage, fileFilter, limit });
 
 // -------------------------
 // /products
@@ -33,9 +34,10 @@ router.get(`/`, (req, res, next) => {
 router.post(`/`, upload.single(`image`), (req, res, next) => {
     const image = req.file;
     const product = new Product({
-        ...req.body,
-        image: image.path,
-        _id: new mongoose.Types.ObjectId()
+        _id: new mongoose.Types.ObjectId(),
+        name: req.body.name,
+        price: req.body.price,
+        image: image.path
     });
 
     product.save()
@@ -67,11 +69,10 @@ router.get(`/:_id`, (req, res, next) => {
 router.patch(`/:_id`, (req, res, next) => {
     const _id = req.params._id;
     const product = req.body;
-    const options = { new: true }
 
     delete product._id;
 
-    Product.findByIdAndUpdate(_id, product, options)
+    Product.findByIdAndUpdate(_id, product, { new: true })
         .then(product => res.status(200).json({ product }))
         .catch(error => res.status(500).json({ error }));
 });
