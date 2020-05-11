@@ -20,5 +20,5 @@ export default (api) => {
     api.use(mongoSanitize());
     api.use(morgan(settings.middleware.morgan.format));
     api.use(rateLimit(settings.middleware.rateLimit.options));
-    apo.use(xssClean());
+    api.use(xssClean());
 };

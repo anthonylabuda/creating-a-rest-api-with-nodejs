@@ -3,6 +3,7 @@ import StatusController from "../controllers/status.js";
 
 const router = express.Router();
 
-router.get(`/`, StatusController.GET_STATUS);
+router.route(`/`)
+    .get(StatusController.GET_STATUS);
 
 export default router;

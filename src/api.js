@@ -19,6 +19,6 @@ process.on(`uncaughtException`, (error) => {
 });
 
 process.on(`unhandledRejection`, (error) => {
-    console.log(`[EXCEPTION] :: An unhandled Exception occurred; Shutting down API...`, error);
+    console.error(`[EXCEPTION] :: An unhandled Exception occurred; Shutting down API...`, error);
     server.close(() => process.exit(1));
 });

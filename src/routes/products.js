@@ -5,11 +5,13 @@ import { authenticate } from "../utils/authentication.js";
 
 const router = express.Router();
 
-router.get(`/`, ProductsController.GET_PRODUCTS);
-router.post(`/`, authenticate, fileManager.single(`image`), ProductsController.POST_PRODUCT);
+router.route(`/`)
+    .get(ProductsController.GET_PRODUCTS)
+    .post(authenticate, fileManager.single(`image`), ProductsController.POST_PRODUCT);
 
-router.delete(`/:_id`, authenticate, ProductsController.DELETE_PRODUCT_BY_ID);
-router.get(`/:_id`, ProductsController.GET_PRODUCT_BY_ID);
-router.patch(`/:_id`, authenticate, ProductsController.PATCH_PRODUCT_BY_ID);
+router.route(`/:_id`)
+    .delete(authenticate, ProductsController.DELETE_PRODUCT_BY_ID)
+    .get(ProductsController.GET_PRODUCT_BY_ID)
+    .patch(authenticate, ProductsController.PATCH_PRODUCT_BY_ID);
 
 export default router;
