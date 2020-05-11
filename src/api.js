@@ -14,7 +14,6 @@ import UsersRoutes from "./routes/users.js";
 
 const api = express();
 const db = `mongodb+srv://${process.env.MONGO_ATLAS_USERNAME}:${process.env.MONGO_ATLAS_PASSWORD}@${process.env.MONGO_ATLAS_CLUSTER}-f2yue.mongodb.net/test?retryWrites=true&w=majority`;
-const rateLimitOptions = { max: 5, windowMs: 1 * 60 * 100 };
 
 mongoose.set(`useCreateIndex`, true);
 mongoose.set(`useFindAndModify`, false);
@@ -28,7 +27,7 @@ api.use(morgan(`dev`));
 api.use(bodyParser.json());
 api.use(bodyParser.urlencoded({ extended: false }));
 api.use(cors())
-api.use(rateLimit(rateLimitOptions));
+api.use(rateLimit({ max: 5, windowMs: 1 * 60 * 100 }));
 
 api.use(`/uploads`, express.static(`uploads`));
 api.use(`/orders`, OrdersRoutes);
