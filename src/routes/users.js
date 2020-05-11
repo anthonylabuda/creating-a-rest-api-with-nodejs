@@ -29,10 +29,10 @@ router.post(`/login`, (req, res, next) => {
         .then(user => {
             if (user.length !== 1) return res.status(401).json({ user: { email } });
 
-            bcrypt.compare(password, user[0].password, (error, valid) => {
+            bcrypt.compare(password, user[0].password, (error, success) => {
                 if (error) return res.status(500).json({ error });
 
-                if (valid) {
+                if (success) {
                     const { _id, email } = user[0];
                     const token = jwt.sign({ _id, email }, process.env.JWT_SECRET, { expiresIn: `1h` });
 
