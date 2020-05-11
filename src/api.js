@@ -1,6 +1,7 @@
 import bodyParser from "body-parser";
 import cors from "cors";
 import express from "express";
+import helmet from "helmet";
 import mongoose from "mongoose";
 import morgan from "morgan";
 
@@ -17,6 +18,8 @@ mongoose.set(`useFindAndModify`, false);
 mongoose.set(`useNewUrlParser`, true);
 mongoose.set(`useUnifiedTopology`, true);
 mongoose.connect(db);
+
+api.use(helmet());
 
 api.use(morgan(`dev`));
 
