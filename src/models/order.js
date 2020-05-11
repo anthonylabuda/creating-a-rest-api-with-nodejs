@@ -4,7 +4,8 @@ const schema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     productId: {
         required: true,
-        type: Number
+        ref: `Product`,
+        type: mongoose.Schema.Types.ObjectId
     },
     quantity: {
         required: true,
