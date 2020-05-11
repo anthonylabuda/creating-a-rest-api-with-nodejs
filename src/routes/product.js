@@ -10,7 +10,7 @@ const router = express.Router();
 router.get(`/`, (req, res, next) => {
     Product.find()
         .exec()
-        .then(products => res.status(200).json(products))
+        .then(products => res.status(200).json({ count: products.length, products }))
         .catch(error => res.status(500).json({ error }));
 });
 
@@ -21,7 +21,7 @@ router.post(`/`, (req, res, next) => {
     });
 
     product.save()
-        .then(product => res.status(201).json(product))
+        .then(product => res.status(201).json({ product }))
         .catch(error => res.status(500).json({ error }));
 });
 
@@ -33,7 +33,7 @@ router.delete(`/:_id`, (req, res, next) => {
 
     Product.remove({ _id })
         .exec()
-        .then(result => res.status(200).json({ _id }))
+        .then(() => res.status(200).json({ product: { _id } }))
         .catch(error => res.status(500).json({ error }));
 });
 
@@ -42,18 +42,19 @@ router.get(`/:_id`, (req, res, next) => {
 
     Product.findById(_id)
         .exec()
-        .then(product => res.status(200).json(product))
+        .then(product => res.status(200).json({ product }))
         .catch(error => res.status(500).json({ error }));
 });
 
 router.patch(`/:_id`, (req, res, next) => {
     const _id = req.params._id;
     const product = req.body;
+    const options = { new: true }
 
     delete product._id;
 
-    Product.updateOne({ _id }, product)
-        .then(result => res.status(200).json({ _id }))
+    Product.findByIdAndUpdate(_id, product, options)
+        .then(product => res.status(200).json({ product }))
         .catch(error => res.status(500).json({ error }));
 });
 

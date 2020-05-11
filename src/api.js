@@ -11,6 +11,7 @@ import statusRouter from "./routes/status.js";
 const api = express();
 const db = `mongodb+srv://${process.env.MONGO_ATLAS_USERNAME}:${process.env.MONGO_ATLAS_PASSWORD}@${process.env.MONGO_ATLAS_CLUSTER}-f2yue.mongodb.net/test?retryWrites=true&w=majority`;
 
+mongoose.set("useFindAndModify", false);
 mongoose.set("useNewUrlParser", true);
 mongoose.set("useUnifiedTopology", true);
 mongoose.connect(db);

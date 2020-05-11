@@ -10,7 +10,7 @@ const router = express.Router();
 router.get(`/`, (req, res, next) => {
     Order.find()
         .exec()
-        .then(orders => res.status(200).json(orders))
+        .then(orders => res.status(200).json({ count: orders.length, orders }))
         .catch(error => res.status(500).json({ error }));
 });
 
@@ -21,19 +21,19 @@ router.post(`/`, (req, res, next) => {
     });
 
     order.save()
-        .then(order => res.status(201).json(order))
+        .then(order => res.status(201).json({ order }))
         .catch(error => res.status(500).json({ error }));
 });
 
 // -------------------------
-// /orders/:id
+// /orders/:_id
 // -------------------------
 router.delete(`/:_id`, (req, res, next) => {
     const _id = req.params._id;
 
     Order.remove({ _id })
         .exec()
-        .then(result => res.status(200).json({ _id }))
+        .then(() => res.status(200).json({ order: { _id } }))
         .catch(error => res.status(500).json({ error }));
 });
 
@@ -42,7 +42,7 @@ router.get(`/:_id`, (req, res, next) => {
 
     Order.findById(_id)
         .exec()
-        .then(order => res.status(200).json(order))
+        .then(order => res.status(200).json({ order }))
         .catch(error => res.status(500).json({ error }));
 });
 
