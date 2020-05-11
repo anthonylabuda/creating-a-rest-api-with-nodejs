@@ -26,6 +26,10 @@ const database = {
     }
 };
 
+const jwt = {
+    secret: process.env.JWT_SECRET
+};
+
 const error = {
     catch: {
         callback: error => console.log(error)
@@ -53,5 +57,6 @@ export default {
     api,
     database,
     error,
+    jwt,
     middleware
 };
