@@ -1,12 +1,12 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import mongoose from "mongoose";
-import User from "../models/user.js";
+import Users from "../models/users.js";
 
 const DELETE_USER_BY_ID = (req, res, next) => {
     const _id = req.params._id;
 
-    User.findByIdAndDelete({ _id })
+    Users.findByIdAndDelete({ _id })
         .exec()
         .then(() => res.status(200).json({ user: { _id } }))
         .catch(error => res.status(500).json({ error }));
@@ -16,7 +16,7 @@ const POST_USER_LOGIN = (req, res, next) => {
     const { email, password } = req.body;
     const user = { email };
 
-    User.find({ email })
+    Users.find({ email })
         .exec()
         .then(users => {
             if (users.length !== 1) return res.status(401).json({ user });
@@ -42,7 +42,7 @@ const POST_USER_SIGNUP = (req, res, next) => {
     const { email, password } = req.body;
     const user = { email };
 
-    User.find({ email })
+    Users.find({ email })
         .exec()
         .then(users => {
             if (users.length !== 0) return res.status(409).json({ user });
@@ -50,7 +50,7 @@ const POST_USER_SIGNUP = (req, res, next) => {
             bcrypt.hash(password, 10, (error, hashedPassword) => {
                 if (error) return res.status(500).json({ error });
 
-                const user = new User({
+                const user = new Users({
                     _id: new mongoose.Types.ObjectId(),
                     email,
                     password: hashedPassword

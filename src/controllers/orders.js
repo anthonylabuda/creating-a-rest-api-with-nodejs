@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
-import Order from "../models/order.js";
+import Orders from "../models/orders.js";
 
 const DELETE_ORDER_BY_ID = (req, res, next) => {
     const _id = req.params._id;
     const order = { _id };
 
-    Order.findByIdAndDelete(_id)
+    Orders.findByIdAndDelete(_id)
         .exec()
         .then(() => res.status(200).json({ order }))
         .catch(error => res.status(500).json({ error }));
@@ -14,7 +14,7 @@ const DELETE_ORDER_BY_ID = (req, res, next) => {
 const GET_ORDER_BY_ID = (req, res, next) => {
     const _id = req.params._id;
 
-    Order.findById(_id)
+    Orders.findById(_id)
         .populate(`product`)
         .exec()
         .then(order => res.status(200).json({ order }))
@@ -22,7 +22,7 @@ const GET_ORDER_BY_ID = (req, res, next) => {
 };
 
 const GET_ORDERS = (req, res, next) => {
-    Order.find()
+    Orders.find()
         .populate(`product`)
         .exec()
         .then(orders => res.status(200).json({ count: orders.length, orders }))
@@ -32,7 +32,7 @@ const GET_ORDERS = (req, res, next) => {
 const POST_ORDER = (req, res, next) => {
     const { product, quantity } = req.body;
 
-    const order = new Order({
+    const order = new Orders({
         _id: new mongoose.Types.ObjectId(),
         product,
         quantity

@@ -2,18 +2,19 @@ import mongoose from "mongoose";
 
 const schema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
-    email: {
-        match: /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/,
+    name: {
         required: true,
-        unique: true,
         type: String
     },
-    password: {
+    price: {
         required: true,
+        type: Number
+    },
+    image: {
         type: String
     }
 });
 
-const User = mongoose.model(`User`, schema);
+const Products = mongoose.model(`Products`, schema);
 
-export default User;
+export default Products;

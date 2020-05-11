@@ -13,6 +13,6 @@ const schema = mongoose.Schema({
     }
 });
 
-const Order = mongoose.model(`Order`, schema);
+const Orders = mongoose.model(`Orders`, schema);
 
-export default Order;
+export default Orders;
