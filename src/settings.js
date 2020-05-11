@@ -1,3 +1,7 @@
+const api = {
+    port: process.env.PORT || 3000
+};
+
 const middleware = {
     express: {
         urlencode: {
@@ -15,11 +19,7 @@ const middleware = {
     }
 };
 
-const server = {
-    port: process.env.PORT || 3000
-};
-
 export default {
-    middleware,
-    server
+    api,
+    middleware
 };

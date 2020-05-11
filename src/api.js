@@ -30,4 +30,4 @@ api.use(rateLimiterMiddleware());
 
 routerMiddleware(api);
 
-export default api;
+api.listen(settings.api.port, () => console.log(`[API] :: Listening on port: ${settings.api.port}`));

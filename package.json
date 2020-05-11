@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "start": "nodemon --exec babel-node src/server",
+    "start": "nodemon --exec babel-node src/api",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Anthony LaBuda",
