@@ -22,14 +22,14 @@ mongoose.set(`useNewUrlParser`, true);
 mongoose.set(`useUnifiedTopology`, true);
 mongoose.connect(db);
 
-api.use(rateLimiterMiddleware());
-
-api.use(compression());
-api.use(helmet());
-api.use(morgan(`dev`));
 api.use(bodyParser.json());
 api.use(bodyParser.urlencoded({ extended: false }));
+api.use(compression());
 api.use(cors())
+api.use(helmet());
+api.use(morgan(`dev`));
+
+api.use(rateLimiterMiddleware());
 
 api.use(`/uploads`, express.static(`uploads`));
 api.use(`/orders`, OrdersRoutes);
