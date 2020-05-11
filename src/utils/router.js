@@ -1,9 +1,9 @@
 import express from "express";
 
-import Orders from "./orders.js";
-import Products from "./products.js";
-import Status from "./status.js";
-import Users from "./users.js";
+import Orders from "../routes/orders.js";
+import Products from "../routes/products.js";
+import Status from "../routes/status.js";
+import Users from "../routes/users.js";
 
 export default (api) => {
     api.use(`/uploads`, express.static(`uploads`));
