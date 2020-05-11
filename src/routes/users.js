@@ -11,7 +11,7 @@ const router = express.Router();
 router.delete(`/:_id`, (req, res, next) => {
     const _id = req.params._id;
 
-    User.remove({ _id })
+    User.deleteOne({ _id })
         .exec()
         .then(() => res.status(200).json({ user: { _id } }))
         .catch(error => res.status(500).json({ error }));
@@ -21,8 +21,7 @@ router.delete(`/:_id`, (req, res, next) => {
 // /users/signup
 // -------------------------
 router.post(`/signup`, (req, res, next) => {
-    const email = req.body.email;
-    const password = req.body.password;
+    const { email, password } = req.body;
 
     User.find({ email })
         .exec()
@@ -30,12 +29,11 @@ router.post(`/signup`, (req, res, next) => {
             if (user.length >= 1) return res.status(409).json({ user: { email } });
 
             bcrypt.hash(password, 10, (error, hash) => {
-                if (error)
-                    return res.status(500).json({ error });
+                if (error) return res.status(500).json({ error });
 
                 const user = new User({
                     _id: new mongoose.Types.ObjectId(),
-                    email: email,
+                    email,
                     password: hash
                 });
 

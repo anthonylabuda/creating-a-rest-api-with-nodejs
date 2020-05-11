@@ -36,11 +36,14 @@ router.get(`/`, (req, res, next) => {
 });
 
 router.post(`/`, upload.single(`image`), (req, res, next) => {
-    const image = req.file;
+    const { path } = req.file;
+    const { name, price } = req.body;
+
     const product = new Product({
-        ...req.body,
-        image: image.path,
-        _id: new mongoose.Types.ObjectId()
+        _id: new mongoose.Types.ObjectId(),
+        name,
+        price,
+        image: path,
     });
 
     product.save()
@@ -54,7 +57,7 @@ router.post(`/`, upload.single(`image`), (req, res, next) => {
 router.delete(`/:_id`, (req, res, next) => {
     const _id = req.params._id;
 
-    Product.remove({ _id })
+    Product.findByIdAndDelete(_id)
         .exec()
         .then(() => res.status(200).json({ product: { _id } }))
         .catch(error => res.status(500).json({ error }));

@@ -16,10 +16,12 @@ router.get(`/`, (req, res, next) => {
 });
 
 router.post(`/`, (req, res, next) => {
+    const { product, quantity } = req.body;
+
     const order = new Order({
         _id: new mongoose.Types.ObjectId(),
-        product: req.body.product,
-        quantity: req.body.quantity
+        product,
+        quantity
     });
 
     order.save()
@@ -33,7 +35,7 @@ router.post(`/`, (req, res, next) => {
 router.delete(`/:_id`, (req, res, next) => {
     const _id = req.params._id;
 
-    Order.remove({ _id })
+    Order.findByIdAndDelete(_id)
         .exec()
         .then(() => res.status(200).json({ order: { _id } }))
         .catch(error => res.status(500).json({ error }));
