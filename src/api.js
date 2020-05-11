@@ -17,7 +17,7 @@ mongoose.set(`useCreateIndex`, true);
 mongoose.set(`useFindAndModify`, false);
 mongoose.set(`useNewUrlParser`, true);
 mongoose.set(`useUnifiedTopology`, true);
-mongoose.connect(db);
+mongoose.connect(db, () => console.log(`[DATABASE] :: Connected to MongoDB Atlas database`));
 
 api.use(express.json());
 api.use(express.urlencoded(settings.middleware.express.urlencode.options));
