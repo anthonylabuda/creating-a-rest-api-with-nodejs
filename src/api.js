@@ -7,7 +7,7 @@ import morgan from "morgan";
 import rateLimit from "express-rate-limit";
 
 import settings from "./settings.js";
-import routerMiddleware from "./middleware/router.js";
+import applyRouterMiddleware from "./routes/router.js";
 
 const api = express();
 const db = `mongodb+srv://${process.env.MONGO_ATLAS_USERNAME}:${process.env.MONGO_ATLAS_PASSWORD}@${process.env.MONGO_ATLAS_CLUSTER}-f2yue.mongodb.net/test?retryWrites=true&w=majority`;
@@ -26,6 +26,6 @@ api.use(helmet());
 api.use(morgan(settings.middleware.morgan.format));
 api.use(rateLimit(settings.middleware.rateLimit.options));
 
-routerMiddleware(api);
+applyRouterMiddleware(api);
 
 api.listen(settings.api.port, () => console.log(`[API] :: Listening on port: ${settings.api.port}`));
