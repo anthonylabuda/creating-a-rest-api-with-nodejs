@@ -23,6 +23,8 @@ api.use(bodyParser.urlencoded({ extended: false }));
 
 api.use(cors())
 
+api.use("/uploads", express.static(`uploads`));
+
 api.use("/orders", orderRoutes);
 api.use("/products", productRoutes);
 api.use("/status", statusRoutes);
