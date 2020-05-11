@@ -6,6 +6,7 @@ import helmet from "helmet";
 import mongoose from "mongoose";
 import morgan from "morgan";
 
+import settings from "./settings.js";
 import rateLimiterMiddleware from "./middleware/rateLimiter.js";
 import routerMiddleware from "./middleware/router.js";
 
@@ -18,12 +19,12 @@ mongoose.set(`useNewUrlParser`, true);
 mongoose.set(`useUnifiedTopology`, true);
 mongoose.connect(db);
 
-api.use(bodyParser.json());
-api.use(bodyParser.urlencoded({ extended: false }));
+api.use(express.json());
+api.use(express.urlencoded(settings.middleware.express.urlencode.options));
 api.use(compression());
 api.use(cors())
 api.use(helmet());
-api.use(morgan(`dev`));
+api.use(morgan(settings.middleware.morgan.format));
 
 api.use(rateLimiterMiddleware());
 

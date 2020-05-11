@@ -5,6 +5,7 @@
         "mimetype",
         "mimetypes",
         "originalname",
-        "ransfer"
+        "ransfer",
+        "urlencode"
     ]
 }
