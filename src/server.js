@@ -1,10 +1,9 @@
 import http from "http";
 import api from "./api.js";
-
-const port = process.env.PORT || 3000;
+import settings from "./settings.js";
 
 const server = http.createServer(api)
 
-server.listen(port, () => {
-    console.log(`[SERVER] :: Listening on port: ${port}`);
+server.listen(settings.server.port, () => {
+    console.log(`[SERVER] :: Listening on port: ${settings.server.port}`);
 });
