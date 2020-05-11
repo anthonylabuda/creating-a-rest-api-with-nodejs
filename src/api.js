@@ -4,9 +4,9 @@ import express from "express";
 import helmet from "helmet";
 import mongoose from "mongoose";
 import morgan from "morgan";
+import rateLimit from "express-rate-limit";
 
 import settings from "./settings.js";
-import rateLimiterMiddleware from "./middleware/rateLimiter.js";
 import routerMiddleware from "./middleware/router.js";
 
 const api = express();
@@ -24,8 +24,7 @@ api.use(compression());
 api.use(cors())
 api.use(helmet());
 api.use(morgan(settings.middleware.morgan.format));
-
-api.use(rateLimiterMiddleware());
+api.use(rateLimit(settings.middleware.rateLimit.options));
 
 routerMiddleware(api);
 
