@@ -1,6 +1,6 @@
 import express from "express";
 import multer from "multer";
-import authenticate from "../middleware/authentication.js";
+import authenticate from "../middleware/authenticator.js";
 import ProductsController from "../controllers/products.js";
 
 const router = express.Router();
