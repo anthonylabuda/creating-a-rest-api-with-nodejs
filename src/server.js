@@ -1,5 +1,5 @@
 import http from "http";
-import api from "../api";
+import api from "./api.js";
 
 const port = process.env.PORT || 3000;
 

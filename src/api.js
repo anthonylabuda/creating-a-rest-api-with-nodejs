@@ -2,7 +2,10 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import express from "express";
 import morgan from "morgan";
-import routes from "./routes";
+
+import ordersRouter from "./routes/orders.js";
+import productsRouter from "./routes/products.js";
+import statusRouter from "./routes/status.js";
 
 const api = express();
 
@@ -13,9 +16,9 @@ api.use(bodyParser.urlencoded({ extended: false }));
 
 api.use(cors())
 
-api.use("/orders", routes.orders);
-api.use("/products", routes.products);
-api.use("/status", routes.status);
+api.use("/orders", ordersRouter);
+api.use("/products", productsRouter);
+api.use("/status", statusRouter);
 
 api.use((req, res, next) => {
     const error = new Error("Not Found");

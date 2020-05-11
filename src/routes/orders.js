@@ -1,6 +1,6 @@
-import express from "express";
+import { Router } from "express";
 
-const router = express.Router();
+const router = Router();
 
 // -------------------------
 // /orders
@@ -9,7 +9,7 @@ router.get("/", (req, res, next) => {
     const orders = [];
 
     res.status(200).json({
-        "message": "Handling GET requests to /orders",
+        "message": "Success!",
         "data": {
             orders
         }
@@ -23,7 +23,7 @@ router.post("/", (req, res, next) => {
     };
 
     res.status(201).json({
-        "message": "Handling POST requests to /orders",
+        "message": "Success!",
         "data": {
             order
         }
@@ -39,7 +39,7 @@ router.delete("/:id", (req, res, next) => {
     };
 
     res.status(200).json({
-        "message": "Handling DELETE requests to /orders/:id",
+        "message": "Success!",
         "data": {
             order
         }
@@ -52,7 +52,7 @@ router.get("/:id", (req, res, next) => {
     };
 
     res.status(200).json({
-        "message": "Handling GET requests to /orders/:id",
+        "message": "Success!",
         "data": {
             order
         }

@@ -1,6 +1,6 @@
-import express from "express";
+import { Router } from "express";
 
-const router = express.Router();
+const router = Router();
 
 // -------------------------
 // /products
@@ -9,7 +9,7 @@ router.get("/", (req, res, next) => {
     const products = [];
 
     res.status(200).json({
-        "message": "Handling GET requests to /products",
+        "message": "Success!",
         "data": {
             products
         }
@@ -23,7 +23,7 @@ router.post("/", (req, res, next) => {
     };
 
     res.status(201).json({
-        "message": "Handling POST requests to /products",
+        "message": "Success!",
         "data": {
             product
         }
@@ -39,7 +39,7 @@ router.delete("/:id", (req, res, next) => {
     };
 
     res.status(200).json({
-        "message": "Handling DELETE requests to /products/:id",
+        "message": "Success!",
         "data": {
             product
         }
@@ -52,7 +52,7 @@ router.get("/:id", (req, res, next) => {
     };
 
     res.status(200).json({
-        "message": "Handling GET requests to /products/:id",
+        "message": "Success!",
         "data": {
             product
         }
@@ -65,7 +65,7 @@ router.patch("/:id", (req, res, next) => {
     };
 
     res.status(200).json({
-        "message": "Handling PATCH requests to /products/:id",
+        "message": "Success!",
         "data": {
             product
         }
