@@ -135,4 +135,7 @@ dist/
 tmp/
 temp/
 
+# Nodemon configuration
+nodemon.json
+
 # End of https://www.gitignore.io/api/node,macos

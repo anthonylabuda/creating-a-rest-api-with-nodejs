@@ -18,3 +18,13 @@
 12. [Adding User Login & JWT Signing](./docs/notes/12-adding-user-login-and-jwt-signing.md)
 13. [JWT Route Protection](./docs/notes/13-jwt-route-protection.md)
 14. [Adding Controllers](./docs/notes/14-adding-controllers.md)
+
+## Environment Variables
+
+This project leverages the following environment variables:
+
+- `MONGO_ATLAS_CLUSTER`
+- `MONGO_ATLAS_USERNAME`
+- `MONGO_ATLAS_PASSWORD`
+
+To set these variables, create a `nodemon.json` file in the project's root directory and set them there.

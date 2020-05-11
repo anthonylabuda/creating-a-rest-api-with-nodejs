@@ -1,14 +1,10 @@
-import { Router } from "express";
+import express from "express";
 
-const router = Router();
+const router = express.Router();
 
 // -------------------------
 // /status
 // -------------------------
-router.get("/", (req, res, next) => {
-    res.status(200).json({
-        "message": "API Online!"
-    });
-});
+router.get("/", (req, res, next) => res.status(200).json({}));
 
 export default router;
