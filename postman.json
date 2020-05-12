@@ -6,34 +6,54 @@
 	},
 	"item": [
 		{
-			"name": "/products",
+			"name": "/orders",
 			"item": [
 				{
-					"name": "/products",
+					"name": "/orders",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWI5OTZkYmI1YzVhMzkzOGU3OWU5MmQiLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJpYXQiOjE1ODkyMjExMDEsImV4cCI6MTU4OTIyNDcwMX0.QSEtvAKXF8dbGlIQB6cwQKuV6xD0eL9HM-iq8RYdUvo",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/products",
+							"raw": "localhost:3000/orders",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"products"
+								"orders"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "/products",
+					"name": "/orders",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWI5OTZkYmI1YzVhMzkzOGU3OWU5MmQiLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJpYXQiOjE1ODkyMjExMDEsImV4cCI6MTU4OTIyNDcwMX0.QSEtvAKXF8dbGlIQB6cwQKuV6xD0eL9HM-iq8RYdUvo",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\": \"Harry Potter and the Sorcerer's Stone\",\n\t\"price\": 12.95\n}",
+							"raw": "{\n\t\"product\": 5eb8d493112ba771fe45c6a1,\n\t\"quantity\": 99\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -41,31 +61,41 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/products",
+							"raw": "localhost:3000/orders",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"products"
+								"orders"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "/products/:id",
+					"name": "/orders/:id",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWI5OTZkYmI1YzVhMzkzOGU3OWU5MmQiLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJpYXQiOjE1ODkyMjExMDEsImV4cCI6MTU4OTIyNDcwMX0.QSEtvAKXF8dbGlIQB6cwQKuV6xD0eL9HM-iq8RYdUvo",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/products/1",
+							"raw": "localhost:3000/orders/1",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"products",
+								"orders",
 								"1"
 							]
 						}
@@ -73,38 +103,29 @@
 					"response": []
 				},
 				{
-					"name": "/products/:id",
+					"name": "/orders/:id",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWI5OTZkYmI1YzVhMzkzOGU3OWU5MmQiLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJpYXQiOjE1ODkyMjExMDEsImV4cCI6MTU4OTIyNDcwMX0.QSEtvAKXF8dbGlIQB6cwQKuV6xD0eL9HM-iq8RYdUvo",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/products/1",
+							"raw": "localhost:3000/orders/5eb8ece8eaeb88796bd356fe",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"products",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/products/:id",
-					"request": {
-						"method": "PATCH",
-						"header": [],
-						"url": {
-							"raw": "localhost:3000/products/1",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"products",
-								"1"
+								"orders",
+								"5eb8ece8eaeb88796bd356fe"
 							]
 						}
 					},
@@ -114,34 +135,63 @@
 			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "/orders",
+			"name": "/products",
 			"item": [
 				{
-					"name": "/orders",
+					"name": "/products",
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/orders",
+							"raw": "localhost:3000/products",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"orders"
+								"products"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "/orders",
+					"name": "/products",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWI5OTZkYmI1YzVhMzkzOGU3OWU5MmQiLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJpYXQiOjE1ODkyMjExMDEsImV4cCI6MTU4OTIyNDcwMX0.QSEtvAKXF8dbGlIQB6cwQKuV6xD0eL9HM-iq8RYdUvo",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"productId\": 1,\n\t\"quantity\": 99\n}",
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Sample",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "0.99",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/anthonylabuda/Downloads/research.png"
+								}
+							],
 							"options": {
 								"raw": {
 									"language": "json"
@@ -149,51 +199,99 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/orders",
+							"raw": "localhost:3000/products",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"orders"
+								"products"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "/orders/:id",
+					"name": "/products/:_id",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWI5OTZkYmI1YzVhMzkzOGU3OWU5MmQiLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJpYXQiOjE1ODkyMjExMDEsImV4cCI6MTU4OTIyNDcwMX0.QSEtvAKXF8dbGlIQB6cwQKuV6xD0eL9HM-iq8RYdUvo",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/orders/1",
+							"raw": "localhost:3000/products/5eb8d4ff7a873c72547310b9",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"orders",
-								"1"
+								"products",
+								"5eb8d4ff7a873c72547310b9"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "/orders/:id",
+					"name": "/products/:_id",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/orders/1",
+							"raw": "localhost:3000/products/5eb8d493112ba771fe45c6a1",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"orders",
-								"1"
+								"products",
+								"5eb8d493112ba771fe45c6a1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/products/:_id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWI5OTZkYmI1YzVhMzkzOGU3OWU5MmQiLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJpYXQiOjE1ODkyMjExMDEsImV4cCI6MTU4OTIyNDcwMX0.QSEtvAKXF8dbGlIQB6cwQKuV6xD0eL9HM-iq8RYdUvo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"_id\": \"5eb8d493112ba771fe45c6a1\",\n\t\"name\": \"Harry Potter and the Chamber of Secrets\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/products/5eb8d493112ba771fe45c6a1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products",
+								"5eb8d493112ba771fe45c6a1"
 							]
 						}
 					},
@@ -204,21 +302,133 @@
 		},
 		{
 			"name": "/status",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:3000/status",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"status"
-					]
+			"item": [
+				{
+					"name": "/status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/status",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"status"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "/uploads",
+			"item": [
+				{
+					"name": "/uploads/:filename",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/uploads/2020-05-11T16:46:23.750Z_2-our-api.png",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"uploads",
+								"2020-05-11T16:46:23.750Z_2-our-api.png"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "/users",
+			"item": [
+				{
+					"name": "/users/:_id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/users/5eb982a116a3788d0a22f259",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"5eb982a116a3788d0a22f259"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"test@test.com\",\n\t\"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/users/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"test@test.com\",\n\t\"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/users/signup",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"protocolProfileBehavior": {}
