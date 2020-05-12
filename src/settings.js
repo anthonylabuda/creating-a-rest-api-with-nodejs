@@ -27,7 +27,12 @@ const middleware = {
         }
     },
     jwt: {
-        secret: process.env.JWT_SECRET
+        secret: process.env.JWT_SECRET,
+        sign: {
+            options: {
+                expiresIn: `1h`
+            }
+        }
     },
     morgan: {
         format: `dev`

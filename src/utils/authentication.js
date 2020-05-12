@@ -15,3 +15,9 @@ export const authenticate = (req, res, next) => {
         return res.status(401).json({ token });
     }
 };
+
+export const generateToken = (_id, email) => {
+    const payload = { _id, email };
+
+    return jwt.sign(payload, settings.middleware.jwt.secret, settings.middleware.jwt.sign.options);
+};
