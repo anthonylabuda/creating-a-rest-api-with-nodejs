@@ -8,5 +8,8 @@ export default () => {
 
     mongoose.connect(uri, settings.database.mongodb.orm.mongoose.options)
         .then(() => console.log(`[DATABASE] :: Connected to MongoDB database: ${baseUri}`))
-        .catch(error => console.log(error));
+        .catch(error => {
+            console.error(error);
+            process.exit(1);
+        });
 };
