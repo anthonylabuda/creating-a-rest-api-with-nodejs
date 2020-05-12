@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
 import mongoose from "mongoose";
 import Users from "../models/users.js";
-import { generateToken } from "../utils/authentication.js";
+import authentication from "../utils/authentication.js";
 
 const DELETE_USER_BY_ID = (req, res, next) => {
     const _id = req.params._id;
@@ -27,7 +27,7 @@ const POST_USER_LOGIN = (req, res, next) => {
 
                 if (success) {
                     const { _id, email } = users[0];
-                    const token = generateToken(_id, email);
+                    const token = authentication.generateToken(_id, email);
                     const user = { _id, email, token };
 
                     return res.status(200).json({ user });

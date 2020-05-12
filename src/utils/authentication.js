@@ -16,8 +16,12 @@ export const authenticate = (req, res, next) => {
     }
 };
 
-export const generateToken = (_id, email) => {
+const generateToken = (_id, email) => {
     const payload = { _id, email };
 
     return jwt.sign(payload, settings.middleware.jwt.secret, settings.middleware.jwt.sign.options);
+};
+
+export default {
+    generateToken
 };
