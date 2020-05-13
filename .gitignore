@@ -134,7 +134,10 @@ dist/
 # Temporary folders
 tmp/
 temp/
-uploads/
+
+# Uploaded images
+uploads/*.jpeg
+uploads/*.png
 
 # Nodemon configuration
 nodemon.json

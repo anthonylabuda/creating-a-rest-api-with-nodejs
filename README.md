@@ -23,8 +23,18 @@
 
 This project leverages the following environment variables:
 
-- `MONGO_ATLAS_CLUSTER`
-- `MONGO_ATLAS_USERNAME`
-- `MONGO_ATLAS_PASSWORD`
+### API
 
-To set these variables, create a `nodemon.json` file in the project's root directory and set them there.
+- `PORT`
+
+### Authentication
+
+- `JWT_SECRET`
+
+### Database
+
+- `MONGODB_CLUSTER`
+- `MONGODB_USERNAME`
+- `MONGODB_PASSWORD`
+
+**Note**: To set these variables, create a `nodemon.json` file in the project's root directory and set them there.
